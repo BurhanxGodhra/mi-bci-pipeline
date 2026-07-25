@@ -1,0 +1,15 @@
+numpy==1.26.4
+scipy==1.13.1
+pandas==2.2.2
+mne==1.7.1
+moabb==1.1.1
+braindecode==0.8.1
+torch==2.3.1
+skorch==1.0.0
+onnx==1.16.1
+onnxruntime==1.18.1
+pylsl==1.16.2
+streamlit==1.36.0
+matplotlib==3.9.0
+jupyterlab==4.2.2
+python-dotenv==1.0.1
