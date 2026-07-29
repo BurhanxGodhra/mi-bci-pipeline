@@ -11,8 +11,13 @@ from eegnet import EEGNet
 
 
 def main():
-    checkpoint_path = "../../models/eegnet_subject1.pt"
-    onnx_output_path = "../../models/eegnet_subject1.onnx"
+    import argparse
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--subject",type=int, default=1)
+    args = parser.parse_args()
+
+    checkpoint_path = f"../../models/eegnet_subject{args.subject}.pt"
+    onnx_output_path = f"../../models/eegnet_subject{args.subject}.onnx"
 
     checkpoint = torch.load(checkpoint_path, map_location="cpu", weights_only=False)
 

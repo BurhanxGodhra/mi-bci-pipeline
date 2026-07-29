@@ -13,8 +13,13 @@ from train import load_split_data  # reuse the same data loader from Phase 2
 
 
 def main():
-    checkpoint_path = "../../models/eegnet_subject1.pt"
-    onnx_path = "../../models/eegnet_subject1.onnx"
+    import argparse
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--subject", type=int, default=1)
+    args = parser.parse_args()
+
+    checkpoint_path = f"../../models/eegnet_subject{args.subject}.pt"
+    onnx_path = f"../../models/eegnet_subject{args.subject}.onnx"
 
     checkpoint = torch.load(checkpoint_path, map_location="cpu", weights_only=False)
     n_channels = checkpoint["n_channels"]
@@ -33,7 +38,7 @@ def main():
 
     # --- Get real test data (subject 1's held-out session) ---
     print("Loading real test trials for verification...")
-    _, (X_test, y_test), _ = load_split_data(subject_id=1)
+    _, (X_test, y_test), _ = load_split_data(subject_id=args.subject)
 
     n_samples_to_check = 20
     X_sample = X_test[:n_samples_to_check]  # (20, 22, 1001)
