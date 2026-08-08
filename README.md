@@ -53,6 +53,19 @@ graph TD
     style Streaming fill:#12151C,stroke:#1F232D,color:#E9EBF0
     style App fill:#12151C,stroke:#1F232D,color:#E9EBF0
 ```
+## Screenshots
+
+**Live Monitor** — real-time intent detection, device command mapping, and session analytics
+
+![Live Monitor](docs/assets/live_monitor.png)
+
+**Accessibility Mode** — larger text, higher contrast, reduced motion
+
+![Live Monitor Accessibility Mode](docs/assets/live_monitor_accessibility.png)
+
+**Forensics Replay** — offline scrubbable analysis of recorded sessions, with ground-truth-aligned scoring
+
+![Forensics Replay](docs/assets/forensics_replay.png)
 
 ## Results
 
