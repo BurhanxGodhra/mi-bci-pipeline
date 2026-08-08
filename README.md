@@ -25,20 +25,20 @@ An end-to-end brain-computer interface system: from offline EEG model training t
 
 ```mermaid
 graph TD
-    subgraph Offline["🧠 Offline Training & Export"]
+    subgraph Offline["Offline Training & Export"]
         A[BCI IV-2a Dataset<br/>via MOABB] --> B[EEGNet Training<br/>PyTorch + MPS]
         B --> C[Per-Subject Checkpoints<br/>.pt]
         C --> D[ONNX Export<br/>+ Numerical Verification]
         D --> E[Subject Model<br/>.onnx]
     end
 
-    subgraph Streaming["📡 Real-Time Simulation"]
+    subgraph Streaming["Real-Time Simulation"]
         F[Continuous Raw EEG<br/>+ Event Markers] --> G[LSL Outlet<br/>lsl_outlet.py]
         G -->|EEG Stream| H((LSL Network))
         G -->|Marker Stream| H
     end
 
-    subgraph App["🖥️ Unified Streamlit App"]
+    subgraph App["Unified Streamlit App"]
         H --> I[Rolling Buffer<br/>Background Thread]
         I --> J[Bandpass Filter<br/>4-38Hz, Leading Margin]
         E --> K[ONNX Runtime<br/>Inference]
