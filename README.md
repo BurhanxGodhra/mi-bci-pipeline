@@ -67,6 +67,7 @@ graph TD
 
 ![Forensics Replay](docs/assets/forensics_replay.png)
 
+
 ## Results
 
 ### Offline classification (per subject, BCI IV-2a session-based split)
