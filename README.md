@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 ![Python](https://img.shields.io/badge/python-3.11-blue)
 ![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C?logo=pytorch&logoColor=white)
 ![ONNX Runtime](https://img.shields.io/badge/ONNX%20Runtime-inference-005CED)
