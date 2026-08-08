@@ -2,8 +2,7 @@ venv/
 __pycache__/
 *.pyc
 data/
-models/*.pt
-models/*.onnx
+models/
 .DS_Store
 .ipynb_checkpoints/
 logs/*.log

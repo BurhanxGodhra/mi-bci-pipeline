@@ -1,0 +1,2 @@
+session_id,subject_id,duration_sec,total_cycles,scored_predictions,accuracy,avg_confidence,avg_latency_ms
+20260807_233806,3,125.1,262,128,0.633,0.698,4.56
