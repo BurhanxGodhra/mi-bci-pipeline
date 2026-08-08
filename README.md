@@ -111,8 +111,6 @@ This single command launches the full app (Live Monitor + Forensics Replay pages
 
 ## Project structure
 
-## Project Structure
-
 ```
 mi-bci-pipeline/
 ├── src/
