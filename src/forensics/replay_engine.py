@@ -28,7 +28,7 @@ class ReplayEngine:
         subject_id = parse_subject_from_filename(data_path)
         model_path = ensure_onnx_model(subject_id) if subject_id is not None else None
         if model_path is None:
-            model_path = str(MODELS_DIR / "eegnet_subject3.onnx")
+            model_path = ensure_onnx_model(3)
             print(f"WARNING: could not detect subject from '{data_path}', using fallback model {model_path}")
 
         self.subject_id = subject_id

@@ -88,6 +88,8 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--speed", type=float, default=1.0,
                          help="Must match the --speed used in lsl_outlet.py")
+    parser.add_argument("--subject", type=int, default=1,
+                         help="Must match the --subject used in lsl_outlet.py")
     args = parser.parse_args()
 
     effective_interval_start = INTERVAL_START_SEC / args.speed
@@ -104,9 +106,9 @@ def main():
 
     eeg_info, marker_info = None, None
     for s in streams:
-        if s.type() == "EEG" and s.name() == "SimulatedEEG":
+        if s.type() == "EEG" and s.name() == f"SimulatedEEG_S{args.subject}":
             eeg_info = s
-        elif s.type() == "Markers":
+        elif s.type() == "Markers" and s.name() == f"SimulatedMarkers_S{args.subject}":
             marker_info = s
 
     if eeg_info is None or marker_info is None:
@@ -148,7 +150,7 @@ def main():
     print(f"Bandpass filter designed: {FILTER_LOW_HZ}-{FILTER_HIGH_HZ}Hz, order={FILTER_ORDER}")
     print(f"Leading buffer margin for filter settling: {BUFFER_LEAD_MARGIN_SEC}s")
 
-    onnx_path = "../../models/eegnet_subject3.onnx"
+    onnx_path = f"../../models/eegnet_subject{args.subject}.onnx"
     session = ort.InferenceSession(onnx_path, providers=["CPUExecutionProvider"])
     input_name = session.get_inputs()[0].name
 

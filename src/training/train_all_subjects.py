@@ -1,5 +1,5 @@
 """
-Step 2.4: Train EEGNet across all 9 BCI IV-2a subjects and summarize results.
+Step 8-fix: Retrain all 9 subjects with corrected (leak-free) methodology.
 """
 import numpy as np
 from train import train_subject
@@ -11,19 +11,20 @@ def main():
         result = train_subject(subject_id=subject_id, n_epochs=100, verbose=True)
         results.append(result)
 
-    accs = [r["best_val_acc"] for r in results]
+    final_accs = [r["final_test_acc"] for r in results]
 
-    print(f"\n{'='*60}")
-    print("MULTI-SUBJECT SUMMARY")
-    print(f"{'='*60}")
-    print(f"{'Subject':<10}{'Val Acc':<10}{'Train N':<10}{'Test N':<10}")
+    print(f"\n{'='*70}")
+    print("MULTI-SUBJECT SUMMARY (corrected methodology -- test set touched once)")
+    print(f"{'='*70}")
+    print(f"{'Subject':<10}{'InternalVal':<14}{'FinalTestAcc':<14}{'TrainN':<10}{'ValN':<8}{'TestN':<8}")
     for r in results:
-        print(f"{r['subject_id']:<10}{r['best_val_acc']:<10.3f}{r['n_train']:<10}{r['n_test']:<10}")
+        print(f"{r['subject_id']:<10}{r['best_internal_val_acc']:<14.3f}{r['final_test_acc']:<14.3f}"
+              f"{r['n_train']:<10}{r['n_val']:<8}{r['n_test']:<8}")
 
-    print(f"\nMean accuracy across subjects: {np.mean(accs):.3f}")
-    print(f"Std deviation across subjects: {np.std(accs):.3f}")
-    print(f"Best subject: {results[np.argmax(accs)]['subject_id']} ({max(accs):.3f})")
-    print(f"Worst subject: {results[np.argmin(accs)]['subject_id']} ({min(accs):.3f})")
+    print(f"\nMean FINAL TEST accuracy across subjects: {np.mean(final_accs):.3f}")
+    print(f"Std deviation: {np.std(final_accs):.3f}")
+    print(f"Best subject: {results[np.argmax(final_accs)]['subject_id']} ({max(final_accs):.3f})")
+    print(f"Worst subject: {results[np.argmin(final_accs)]['subject_id']} ({min(final_accs):.3f})")
 
 
 if __name__ == "__main__":

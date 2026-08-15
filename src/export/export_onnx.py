@@ -26,7 +26,11 @@ def main():
     label_map = checkpoint["label_map"]
     n_classes = len(label_map)
 
-    print(f"Loaded checkpoint: val_acc={checkpoint['val_acc']:.3f}")
+    reported_acc = checkpoint.get('final_test_acc', checkpoint.get('val_acc'))
+    if reported_acc is not None:
+        print(f"Loaded checkpoint: reported_acc={reported_acc:.3f}")
+    else:
+        print("Loaded checkpoint (no accuracy field found in this checkpoint)")
     print(f"n_channels={n_channels}, n_timepoints={n_timepoints}, n_classes={n_classes}")
 
     # Rebuild model architecture and load trained weights
