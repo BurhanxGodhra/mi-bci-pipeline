@@ -1,7 +1,5 @@
 ![Python](https://img.shields.io/badge/python-3.11-blue)
 ![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C?logo=pytorch&logoColor=white)
-![ONNX Runtime](https://img.shields.io/badge/ONNX%20Runtime-inference-005CED)
-![Streamlit](https://img.shields.io/badge/Streamlit-app-FF4B4B?logo=streamlit&logoColor=white)
 ![License](https://img.shields.io/badge/license-MIT-green)
 
 # Real-Time Motor Imagery BCI Pipeline
